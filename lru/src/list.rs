@@ -130,13 +130,13 @@ impl List {
     pub fn pop_back(&mut self) -> Option<String> {
         self.tail.map(|node| unsafe {
             // let poped_node = Box::from_raw(node.as_ptr());
-            let key = (*node.as_ptr()).key.clone();
-            self.tail = (*node.as_ptr()).prev;
+            let key = node.as_ref().key.clone();
+            self.tail = node.as_ref().prev;
 
             match self.tail {
                 None => self.head = None,
                 // Not creating new mutable (unique!) references overlapping `element`.
-                Some(tail) => (*tail.as_ptr()).next = None,
+                Some(mut tail) => tail.as_mut().next = None,
             }
 
             self.len -= 1;
