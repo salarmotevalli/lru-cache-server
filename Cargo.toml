@@ -1,0 +1,17 @@
+[package]
+name = "lru-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = {workspace = true, features = ["full"]}
+lru ={ path = "lru"}
+
+
+
+[workspace]
+members = ["lru"]
+
+
+[workspace.dependencies]
+tokio = {version = "1.0"}
