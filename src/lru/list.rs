@@ -162,11 +162,11 @@ mod test {
     
     #[test]
     fn test_node_is_tail_works_fine() {
-        let mut n = Node::new("test".to_string(), crate::value::Value::Bool(true));
+        let mut n = Node::new("test".to_string(), super::Value::Bool(true));
 
         assert_eq!(n.is_tail(), true);
     
-        let n2= Node::new("test1".to_string(), crate::value::Value::Bool(false));
+        let n2= Node::new("test1".to_string(), super::Value::Bool(false));
 
         let boxed_n = Box::new(n2);
 

@@ -1,6 +1,6 @@
 use std::{borrow::Cow, sync::Arc};
 
-use lru::{value::Value, Lru};
+use crate::lru::{value::Value, Lru};
 use tokio::sync::Mutex;
 
 pub struct Command {
@@ -8,9 +8,9 @@ pub struct Command {
 }
 
 impl Command {
-    pub fn new() -> Self {
+    pub fn new(lru: Lru) -> Self {
         Self {
-            lru: Arc::new(Mutex::new(Lru::new())),
+            lru: Arc::new(Mutex::new(lru)),
         }
     }
 

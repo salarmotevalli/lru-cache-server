@@ -6,8 +6,8 @@ use std::collections::HashMap;
 use value::Value;
 
 #[derive(Debug)]
-struct LruConfig {
-    capacity: usize,
+pub struct LruConfig {
+    pub capacity: usize,
 }
 
 #[derive(Debug)]
@@ -21,11 +21,11 @@ unsafe impl Send for Lru {}
 unsafe impl Sync for Lru {}
 
 impl Lru {
-    pub fn new() -> Self {
+    pub fn new(config: LruConfig) -> Self {
         Self {
             refs: HashMap::new(),
             data: List::new(),
-            config: LruConfig { capacity: 5 },
+            config,
         }
     }
 
